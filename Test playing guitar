@@ -1,0 +1,37 @@
+import winsound
+
+def play_note(note, duration):
+    # Use winsound to play the note
+    # Assumes Windows platform
+    # Adjust the frequency values according to your guitar's tuning
+    frequencies = {
+        'E': 329.63,
+        'A': 440.00,
+        'D': 293.66,
+        'G': 392.00,
+        'B': 246.94,
+        'e': 329.63
+    }
+    winsound.Beep(int(frequencies[note]), duration)
+
+def main():
+    print("Guitar Notes Learning Program")
+    print("-----------------------------")
+    print("Enter the note to play, or 'quit' to exit the program.")
+
+    while True:
+        note = input("Enter a note (E, A, D, G, B, e): ")
+        if note == 'quit':
+            print("Exiting the program...")
+            break
+        elif note not in ['E', 'A', 'D', 'G', 'B', 'e']:
+            print("Invalid note. Please try again.")
+            continue
+
+        duration = int(input("Enter the duration (in milliseconds): "))
+
+        play_note(note, duration)
+        print("Note played:", note)
+
+if __name__ == "__main__":
+    main()
